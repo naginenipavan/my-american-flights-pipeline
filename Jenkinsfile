@@ -12,8 +12,8 @@ pipeline {
 		
 		stage('Pull Request Raised') {
 			steps {
-				bat 'git checkout master'
-				bat 'gh pr create --title "Pull request title" --body "Pull request body"'
+				bat 'git checkout integration'
+				bat 'C:\\Users\\PavanN\\Downloads\\gh_2.1.0_windows_386\\bin\\gh pr create --title "Hello This is my first PR" --body "First Jenkins PR"'
 			}
 
 		}
