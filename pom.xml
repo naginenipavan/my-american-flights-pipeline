@@ -4,7 +4,7 @@
 
     <groupId>com.mycompany</groupId>
     <artifactId>my-american-flights</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
     <name>my-american-flights</name>
@@ -22,7 +22,7 @@
     <scm>
         <developerConnection>scm:git:https://github.com/naginenipavan/my-american-flights-pipeline.git</developerConnection>
         <url>https://github.com/naginenipavan/my-american-flights-pipeline</url>
-        <tag>my-american-flights-1.0.2</tag>
+        <tag>HEAD</tag>
     </scm>
     
 
