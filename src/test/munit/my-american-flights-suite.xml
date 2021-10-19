@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="my-american-flights-suite.xml" />
+    <munit:test name="get:\flights\(ID):my-american-flights-config-test" doc:id="bad2733c-dbdc-48ea-9513-30db481d4485" >
+        <munit:behavior >
+            <munit:set-event doc:name="Set Input" doc:id="6f233a8c-0072-4d6b-adb6-d1d0b910bfb5" >
+                <munit:payload value="#[readUrl('classpath://getflightsIDmyamericanflightsconfigtest\set-event_payload.dwl')]" encoding="UTF-8" />
+                <munit:attributes value="#[readUrl('classpath://getflightsIDmyamericanflightsconfigtest\set-event_attributes.dwl')]" />
+                <munit:variables >
+                    <munit:variable key="outboundHeaders" value="#[readUrl('classpath://getflightsIDmyamericanflightsconfigtest\set-event_variable_.dwl')]" />
+                </munit:variables>
+            </munit:set-event>
+        </munit:behavior>
+        <munit:execution >
+            <flow-ref doc:name="Flow-ref to get:\flights\(ID):my-american-flights-config" doc:id="b49313bd-bfcc-4ee6-9c0e-058caadd0934" name="get:\flights\(ID):my-american-flights-config"/>
+        </munit:execution>
+        <munit:validation >
+            <munit-tools:assert doc:name="Assert payload" doc:id="fd522134-6242-472b-b0b2-67f1c917c769" message="The payload does not match">
+                <munit-tools:that ><![CDATA[#[%dw 2.0
+import getflightsIDmyamericanflightsconfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+            </munit-tools:assert>
+        </munit:validation>
+    </munit:test>
+
+
+</mule>
